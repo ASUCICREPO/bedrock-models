@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   Toolbar,
   Typography,
@@ -120,7 +120,7 @@ const CompareModels = () => {
   const buttonsConfig = [
     {
       label: "Chat",
-      route: "/chat",
+      route: "/",
       color: "primary",
       style: {
         backgroundColor: primary_50,

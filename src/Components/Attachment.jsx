@@ -8,7 +8,7 @@ import { useModel } from "../contexts/ModelContext";
 
 function Attachment({ onFileUploadComplete }) {
   const [uploading, setUploading] = useState(false);
-  const { models, selectedModel, selectedModelId } = useModel();
+  const { selectedModel, selectedModelId } = useModel();
   const { addMessage } = useMessage();
 
   const handleFileUpload = async (event) => {
