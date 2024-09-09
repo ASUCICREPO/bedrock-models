@@ -120,7 +120,7 @@ const CompareModels = () => {
   const buttonsConfig = [
     {
       label: "Chat",
-      route: "/",
+      route: "/chat",
       color: "primary",
       style: {
         backgroundColor: primary_50,
