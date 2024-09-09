@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------------------------------------//
 // Primary color constants for the theme
 export const PRIMARY_MAIN = "#444E56"; // The main primary color used for buttons, highlights, etc.
-export const primary_50 = "#E7B00C"; // The 50 variant of the primary color
+export const primary_50 = "#069ede"; // The 50 variant of the primary color
 
 // Background color constants
 export const SECONDARY_MAIN = "#D3D3D3"; // The main secondary color used for less prominent elements
@@ -18,7 +18,7 @@ export const HEADER_TEXT_GRADIENT = "#444E56"; // Text gradient color for the he
 
 // Message background colors
 export const BOTMESSAGE_BACKGROUND = "#F5F5F5"; // Background color for messages sent by the bot
-export const USERMESSAGE_BACKGROUND = "#FFEFCA"; // Background color for messages sent by the user
+export const USERMESSAGE_BACKGROUND = "#edf7fa"; // Background color for messages sent by the user
 
 // --------------------------------------------------------------------------------------------------------//
 // --------------------------------------------------------------------------------------------------------//
@@ -26,10 +26,56 @@ export const USERMESSAGE_BACKGROUND = "#FFEFCA"; // Background color for message
 // Text Constants
 export const TEXT = {
   EN: {
-    APP_NAME: "Chatbot Template App",
-    APP_ASSISTANT_NAME: "GenAI Bot",
+    APP_NAME: "NJ Chatbot App",
+    APP_ASSISTANT_NAME: "NJ AI Bot",
     ABOUT_US_TITLE: "About us",
-    ABOUT_US: "Welcome to the GenAI chat bot! We're here to assist to quickly access relevant information.",
+    ABOUT_US: [
+      {
+        type: "heading",
+        level: 5,
+        content: "NJ AI Assistant"
+      },
+      {
+        type: "paragraph",
+        content: "This is an internal generative artificial intelligence chatbot for use by NJ state employees and authorized parties, using Amazon Bedrock."
+      },
+      {
+        type: "heading",
+        level: 6,
+        content: "Training Requirements"
+      },
+      {
+        type: "paragraph",
+        content: "Before using the NJ AI Assistant, please begin the Responsible AI for Public Professionals training course, where you'll be asked to use the AI Assistant."
+      },
+      {
+        type: "list",
+        items: [
+          "Access this course as a State Learner or as an External Learner. You will be asked to log in with MyNJ and then redirected to the training. If you have trouble accessing the course, please email ciplearning.support@csc.nj.gov."
+        ]
+      },
+      {
+        type: "heading",
+        level: 6,
+        content: "Sensitive Information"
+      },
+      {
+        type: "paragraph",
+        content: "In order to ensure responsible, safe AI use, please follow these guidelines:"
+      },
+      {
+        type: "list",
+        items: [
+          "Do not share personally identifiable information (PII) about residents, colleagues, or yourself.",
+          "Do not share confidential or sensitive content, nor transcribe or summarize meetings where sensitive topics are discussed.",
+          "In short: Do not share any information that you wouldn't share publicly."
+        ]
+      },
+      {
+        type: "paragraph",
+        content: "For more information, view the NJ Office of Innovation Guide."
+      }
+    ],
     FAQ_TITLE: "Frequently Asked Questions",
     FAQS: [
       "What is React JS? and How do I get started?",
@@ -38,7 +84,7 @@ export const TEXT = {
       "What is the capital of France and its population?",
       "What is the weather like in New York?"
     ],
-    CHAT_HEADER_TITLE: "Sample AI Chat Assistant",
+    CHAT_HEADER_TITLE: "NJ AI Chat Assistant",
     CHAT_INPUT_PLACEHOLDER: "Type a Query...",
     HELPER_TEXT: "Cannot send empty message",
     SPEECH_RECOGNITION_START: "Start Listening",
@@ -93,6 +139,9 @@ export const LANDING_PAGE_TEXT = {
 
 
 // --------------------------------------------------------------------------------------------------------//
+// admin constants
+// Dummy admin users
+export const adminUsers = ["admin1", "admin2", "superadmin", "adminTest"];
 // --------------------------------------------------------------------------------------------------------//
 
 // API endpoints
@@ -100,19 +149,227 @@ export const LANDING_PAGE_TEXT = {
 
 export const CHAT_API = process.env.REACT_APP_CHAT_API; // URL for the chat API endpoint
 export const WEBSOCKET_API = process.env.REACT_APP_WEBSOCKET_API; // URL for the WebSocket API endpoint
+export const MODELS_LIST = process.env.REACT_APP_MODEL_INFORMATIONS // url for getting information about the models
+export const CONVERSE_API = process.env.REACT_APP_CONVERSE_API
+
+
+export const MAX_TEXT_LENGTH_PDF = 150000; // Number of words to check for PDF size (150000 - 200000 is good enough for 200k token limit of claude)
 
 
 // --------------------------------------------------------------------------------------------------------//
 // --------------------------------------------------------------------------------------------------------//
 
 // Features
-export const ALLOW_FILE_UPLOAD = false; // Set to true to enable file upload feature
+export const ALLOW_FILE_UPLOAD = true; // Set to true to enable file upload feature
 export const ALLOW_VOICE_RECOGNITION = true; // Set to true to enable voice recognition feature
 
-export const ALLOW_MULTLINGUAL_TOGGLE = true; // Set to true to enable multilingual support
-export const ALLOW_LANDING_PAGE = true; // Set to true to enable the landing page
+export const ALLOW_MULTLINGUAL_TOGGLE = false; // Set to true to enable multilingual support
+export const ALLOW_LANDING_PAGE = false; // Set to true to enable the landing page
 
 // --------------------------------------------------------------------------------------------------------//
 // Styling under work, would reccomend keeping it false for now
 export const ALLOW_MARKDOWN_BOT = false; // Set to true to enable markdown support for bot messages
 export const ALLOW_FAQ = true; // Set to true to enable the FAQs to be visible in Chat body 
+
+
+
+// --------------------------------------------------------------------------------------------------------//
+// Since there is currently no API for model costs retrieval, I added them all here, if they change at any time they can be edited here
+export const MODEL_COSTS = [
+  {
+    modelId: "amazon.titan-tg1-large",
+    modelName: "Titan Text Large",
+    providerName: "Amazon",
+    costPer1000InputTokens: 0.0005,
+    costPer1000OutputTokens: 0.0015,
+  },
+  {
+    modelId: "amazon.titan-text-lite-v1",
+    modelName: "Titan Text G1 - Lite",
+    providerName: "Amazon",
+    costPer1000InputTokens: 0.00015,
+    costPer1000OutputTokens: 0.0002,
+  },
+  {
+    modelId: "amazon.titan-text-express-v1",
+    modelName: "Titan Text G1 - Express",
+    providerName: "Amazon",
+    costPer1000InputTokens: 0.0002,
+    costPer1000OutputTokens: 0.0006,
+  },
+  {
+    modelId: "ai21.j2-grande-instruct",
+    modelName: "J2 Grande Instruct",
+    providerName: "AI21 Labs",
+    costPer1000InputTokens: 0.0125,
+    costPer1000OutputTokens: 0.0125,
+  },
+  {
+    modelId: "ai21.j2-jumbo-instruct",
+    modelName: "J2 Jumbo Instruct",
+    providerName: "AI21 Labs",
+    costPer1000InputTokens: 0.0188,
+    costPer1000OutputTokens: 0.0188,
+  },
+  {
+    modelId: "anthropic.claude-instant-v1",
+    modelName: "Claude Instant",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.0008,
+    costPer1000OutputTokens: 0.0024,
+  },
+  {
+    modelId: "anthropic.claude-v2",
+    modelName: "Claude",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.008,
+    costPer1000OutputTokens: 0.024,
+  },
+  {
+    modelId: "anthropic.claude-v2:1",
+    modelName: "Claude",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.008,
+    costPer1000OutputTokens: 0.024,
+  },
+  {
+    modelId: "anthropic.claude-3-sonnet-20240229-v1:0",
+    modelName: "Claude 3 Sonnet",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.003,
+    costPer1000OutputTokens: 0.015,
+  },
+  {
+    modelId: "anthropic.claude-3-haiku-20240307-v1:0",
+    modelName: "Claude 3 Haiku",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.00025,
+    costPer1000OutputTokens: 0.00125,
+  },
+  {
+    modelId: "anthropic.claude-3-opus-20240229-v1:0",
+    modelName: "Claude 3 Opus",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.015,
+    costPer1000OutputTokens: 0.075,
+  },
+  {
+    modelId: "anthropic.claude-3-5-sonnet-20240620-v1:0",
+    modelName: "Claude 3.5 Sonnet",
+    providerName: "Anthropic",
+    costPer1000InputTokens: 0.003,
+    costPer1000OutputTokens: 0.015,
+  },
+  {
+    modelId: "cohere.command-text-v14",
+    modelName: "Command",
+    providerName: "Cohere",
+    costPer1000InputTokens: 0.0015,
+    costPer1000OutputTokens: 0.0020,
+  },
+  {
+    modelId: "cohere.command-light-text-v14",
+    modelName: "Command Light",
+    providerName: "Cohere",
+    costPer1000InputTokens: 0.0003,
+    costPer1000OutputTokens: 0.0006,
+  },
+  {
+    modelId: "cohere.command-r-v1:0",
+    modelName: "Command R",
+    providerName: "Cohere",
+    costPer1000InputTokens: 0.0005,
+    costPer1000OutputTokens: 0.0015,
+  },
+  {
+    modelId: "cohere.command-r-plus-v1:0",
+    modelName: "Command R+",
+    providerName: "Cohere",
+    costPer1000InputTokens: 0.003,
+    costPer1000OutputTokens: 0.015,
+  },
+  {
+    modelId: "meta.llama3-8b-instruct-v1:0",
+    modelName: "Llama 3 8B Instruct",
+    providerName: "Meta",
+    costPer1000InputTokens: 0.00022,
+    costPer1000OutputTokens: 0.00022,
+  },
+  {
+    modelId: "meta.llama3-70b-instruct-v1:0",
+    modelName: "Llama 3 70B Instruct",
+    providerName: "Meta",
+    costPer1000InputTokens: 0.00099,
+    costPer1000OutputTokens: 0.00099,
+  },
+  {
+    modelId: "meta.llama3-1-8b-instruct-v1:0",
+    modelName: "Llama 3.1 8B Instruct",
+    providerName: "Meta",
+    costPer1000InputTokens: 0.00022,
+    costPer1000OutputTokens: 0.00022,
+  },
+  {
+    modelId: "meta.llama3-1-70b-instruct-v1:0",
+    modelName: "Llama 3.1 70B Instruct",
+    providerName: "Meta",
+    costPer1000InputTokens: 0.00099,
+    costPer1000OutputTokens: 0.00099,
+  },
+  {
+    modelId: "meta.llama3-1-405b-instruct-v1:0",
+    modelName: "Llama 3.1 405B Instruct",
+    providerName: "Meta",
+    costPer1000InputTokens: 0.00532,
+    costPer1000OutputTokens: 0.016,
+  },
+  {
+    modelId: "mistral.mistral-7b-instruct-v0:2",
+    modelName: "Mistral 7B Instruct",
+    providerName: "Mistral AI",
+    costPer1000InputTokens: 0.00015,
+    costPer1000OutputTokens: 0.0002,
+  },
+  {
+    modelId: "mistral.mixtral-8x7b-instruct-v0:1",
+    modelName: "Mixtral 8x7B Instruct",
+    providerName: "Mistral AI",
+    costPer1000InputTokens: 0.00045,
+    costPer1000OutputTokens: 0.0007,
+  },
+  {
+    modelId: "mistral.mistral-large-2402-v1:0",
+    modelName: "Mistral Large (2402)",
+    providerName: "Mistral AI",
+    costPer1000InputTokens: 0.004,
+    costPer1000OutputTokens: 0.012,
+  },
+  {
+    modelId: "mistral.mistral-large-2407-v1:0",
+    modelName: "Mistral Large (2407)",
+    providerName: "Mistral AI",
+    costPer1000InputTokens: 0.004,
+    costPer1000OutputTokens: 0.012,
+  },
+  {
+    modelId: "ai21.j2-mid-instruct",
+    modelName: "Jurassic-2 Mid",
+    providerName: "AI21 Labs",
+    costPer1000InputTokens: 0.0125,
+    costPer1000OutputTokens: 0.0125,
+  },
+  {
+    modelId: "ai21.j2-ultra-instruct",
+    modelName: "Jurassic-2 Ultra",
+    providerName: "AI21 Labs",
+    costPer1000InputTokens: 0.0188,
+    costPer1000OutputTokens: 0.0188,
+  },
+  {
+    modelId: "ai21.j2-jumbo-instruct",
+    modelName: "Jamba-Instruct",
+    providerName: "AI21 Labs",
+    costPer1000InputTokens: 0.0005,
+    costPer1000OutputTokens: 0.0007,
+  }
+];

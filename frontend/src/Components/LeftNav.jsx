@@ -1,59 +1,85 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
+import Drawer from "@mui/material/Drawer";
 import Typography from "@mui/material/Typography";
-import { useLanguage } from "../utilities/LanguageContext"; // Adjust the import path
-import { ABOUT_US_HEADER_BACKGROUND, ABOUT_US_TEXT, FAQ_HEADER_BACKGROUND, FAQ_TEXT, TEXT } from "../utilities/constants"; // Adjust the import path
-import closeIcon from "../Assets/close.svg"; // Assuming close.svg is an image
-import arrowRightIcon from "../Assets/arrow_right.svg"; // Assuming arrow_right.svg is an image
+import Box from "@mui/material/Box";
 
-function LeftNav({ showLeftNav = true, setLeftNav }) {
-  const { language } = useLanguage();
+import Toolbar from "@mui/material/Toolbar";
+import {
+  TEXT,
+} from "../utilities/constants"; // Adjust the import path
+
+function LeftNav({ drawerWidth, mobileOpen, handleDrawerClose, handleDrawerTransitionEnd }) {
+  const aboutUsContent = TEXT.EN.ABOUT_US;
+
+  const renderContent = (content) => {
+    return content.map((item, index) => {
+      switch (item.type) {
+        case "heading":
+          return (
+            <Typography variant={`h${item.level}`} key={index}>
+              {item.content}
+            </Typography>
+          );
+        case "paragraph":
+          return (
+            <Typography variant="subtitle2" key={index} paragraph>
+              {item.content}
+            </Typography>
+          );
+        case "list":
+          return (
+            <Box component="ul" key={index} sx={{ paddingLeft: "1.5rem" }}>
+              {item.items.map((listItem, listIndex) => (
+                <Box component="li" key={listIndex}>
+                  <Typography variant="subtitle2">{listItem}</Typography>
+                </Box>
+              ))}
+            </Box>
+          );
+        default:
+          return null;
+      }
+    });
+  };
 
   return (
     <>
-      <Grid className="appHeight100">
-        <Grid container direction="column" justifyContent="flex-start" alignItems="stretch" padding={4} spacing={2}>
-          {showLeftNav ? (
-            <>
-              <Grid item container direction="column" justifyContent="flex-start" alignItems="flex-end">
-                <img
-                  src={closeIcon}
-                  alt="Close Panel"
-                  onClick={() => setLeftNav(false)} // Removed extra parentheses
-                />
-              </Grid>
-              <Grid item >
-                <Typography variant="h6" sx={{fontWeight:"bold"}} color={ABOUT_US_HEADER_BACKGROUND}>{TEXT[language].ABOUT_US_TITLE}</Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="subtitle1" color={ABOUT_US_TEXT} >{TEXT[language].ABOUT_US}</Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h6" sx={{fontWeight:"bold"}} color={FAQ_HEADER_BACKGROUND}>{TEXT[language].FAQ_TITLE}</Typography>
-              </Grid>
-              <Grid item>
-                <ul >
-                  {TEXT[language].FAQS.map((question, index) => (
-                    <li key={index} >
-                      <Typography variant="subtitle1" color={FAQ_TEXT}>{question}</Typography>
-                    </li>
-                  ))}
-                </ul>
-              </Grid>
-            </>
-          ) : (
-            <>
-              <Grid item container direction="column" justifyContent="flex-start" alignItems="flex-end">
-                <img
-                  src={arrowRightIcon}
-                  alt="Open Panel"
-                  onClick={() => setLeftNav(true)} // Removed extra parentheses
-                />
-              </Grid>
-            </>
-          )}
-        </Grid>
-      </Grid>
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onTransitionEnd={handleDrawerTransitionEnd}
+        onClose={handleDrawerClose}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: drawerWidth,
+          },
+        }}
+      >
+        <div>
+          <Toolbar/>
+          <Box sx={{ p: 2 }}>{renderContent(aboutUsContent)}</Box>
+        </div>
+      </Drawer>
+
+
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: { xs: "none", sm: "block" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+        }}
+        open
+      >
+        <div>
+          <Toolbar/>
+          <Box sx={{ p: 2 }}>{renderContent(aboutUsContent)}</Box>
+        </div>
+      </Drawer>
     </>
   );
 }

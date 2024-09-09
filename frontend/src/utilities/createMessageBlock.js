@@ -7,10 +7,23 @@
  * @param {string} [state='PROCESSING'] - The state of the message ('PROCESSING' or 'RECEIVED' or 'SENT' or 'STREAMING').
  * @param {string} [fileName=''] - The name of the file (if type is 'FILE').
  * @param {string} [fileStatus=''] - The status of the file (if type is 'FILE').
+ * @param {string} [modelName=''] - The name of the model used.
+ * @param {string} [modelId=''] - The ID of the model used.
+ * @param {string} [errorMessage=''] - The error message (if any).
  * @returns {Object} - A message block object.
  * @throws Will throw an error if sentBy, type, or state are invalid.
  */
-const createMessageBlock = (message, sentBy, type = "TEXT", state = "PROCESSING", fileName = "", fileStatus = "") => {
+const createMessageBlock = (
+  message,
+  sentBy,
+  type = "TEXT",
+  state = "PROCESSING",
+  fileName = "",
+  fileStatus = "",
+  modelName = "",
+  modelId = "",
+  errorMessage = "" // New error message field
+) => {
   // Valid sender types
   const validSenders = ["USER", "BOT"];
   // Valid message types
@@ -41,6 +54,9 @@ const createMessageBlock = (message, sentBy, type = "TEXT", state = "PROCESSING"
     state,
     fileName,
     fileStatus,
+    modelName,
+    modelId,
+    errorMessage // Include the error message field in the message block
   };
 };
 

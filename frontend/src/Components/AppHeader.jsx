@@ -1,40 +1,40 @@
-import React from "react";
-import { Grid, AppBar } from "@mui/material";
-import Logo from "../Assets/header_logo.svg";
-import Switch from "./Switch.jsx";
-import { ALLOW_MULTLINGUAL_TOGGLE } from "../utilities/constants";
+import { Toolbar, AppBar, Button, Box } from '@mui/material';
+import React from 'react';
+import Logo from "../Assets/header_logo.jpg";
+import { useNavigate } from 'react-router-dom'; 
 
-function AppHeader({ showSwitch }) {
+function AppHeader({ buttonsConfig, buttonStyle }) {
+  const navigate = useNavigate(); 
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         backgroundColor: (theme) => theme.palette.background.header,
-        height: "5rem",
-        boxShadow: "none",
-        borderBottom: (theme) => `1.5px solid ${theme.palette.primary[50]}`,
       }}
     >
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ padding: "0 3rem" }}
-        className="appHeight100"
-      >
-        <Grid item>
-          <img src={Logo} alt={`App main Logo`} height={64} />
-        </Grid>
-        <Grid item>
-          <Grid container alignItems="center" justifyContent="space-evenly" spacing={2}>
-            <Grid item sx={{ display: ALLOW_MULTLINGUAL_TOGGLE && showSwitch ? "flex" : "none" }}>
-              <Switch />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+      <Toolbar>
+        <img src={Logo} alt={`App main Logo`} height={64} />
+        
+        {/* Flex Spacer */}
+        <Box sx={{ flexGrow: 1 }} />
+        
+        {/* Render Buttons Dynamically */}
+        {buttonsConfig && buttonsConfig.map((btn, index) => (
+          <Button
+            key={index}
+            color={btn.color || "inherit"}
+            onClick={() => navigate(btn.route)}  // Navigate to the specified route
+            sx={{
+              marginRight: index < buttonsConfig.length - 1 ? 2 : 0, // Add margin except for the last button
+              ...buttonStyle,  // Custom styles for Buttons
+              ...btn.style,    // Additional styles per button
+            }}
+          >
+            {btn.label}
+          </Button>
+        ))}
+      </Toolbar>
     </AppBar>
   );
 }
