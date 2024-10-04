@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------------------------------------//
 // Primary color constants for the theme
-export const PRIMARY_MAIN = "#444E56"; // The main primary color used for buttons, highlights, etc.
-export const primary_50 = "#069ede"; // The 50 variant of the primary color
+export const PRIMARY_MAIN = "#ffc627"; // 
+export const primary_50 = "#8c1d40"; // The main primary color used for buttons, highlights, etc.
 
 // Background color constants
 export const SECONDARY_MAIN = "#D3D3D3"; // The main secondary color used for less prominent elements
@@ -26,129 +26,41 @@ export const USERMESSAGE_BACKGROUND = "#edf7fa"; // Background color for message
 // Text Constants
 export const TEXT = {
   EN: {
-    APP_NAME: "NJ Chatbot App",
-    APP_ASSISTANT_NAME: "NJ AI Bot",
+    APP_NAME: "Artificial Intelligence Cloud Innovation Center",
+    APP_ASSISTANT_NAME: "Artificial Intelligence Cloud Innovation Center",
     ABOUT_US_TITLE: "About us",
     ABOUT_US: [
       {
         type: "heading",
         level: 5,
-        content: "NJ AI Assistant"
+        content: "About AI CIC"
       },
       {
         type: "paragraph",
-        content: "This is an internal generative artificial intelligence chatbot for use by NJ state employees and authorized parties, using Amazon Bedrock."
-      },
-      {
-        type: "heading",
-        level: 6,
-        content: "Training Requirements"
+        content: "This is an internal generative artificial intelligence chatbot created by Artificial Intelligence Cloud Innovation Center, using Amazon Bedrock."
       },
       {
         type: "paragraph",
-        content: "Before using the NJ AI Assistant, please begin the Responsible AI for Public Professionals training course, where you'll be asked to use the AI Assistant."
+        content: "Also known as the AI CIC, the ASU Artificial Intelligence Cloud Innovation Center, powered by AWS, harnesses the capabilities of artificial intelligence (AI) to help global government agencies, education institutions, and nonprofits address mission-related challenges."
       },
-      {
-        type: "list",
-        items: [
-          "Access this course as a State Learner or as an External Learner. You will be asked to log in with MyNJ and then redirected to the training. If you have trouble accessing the course, please email ciplearning.support@csc.nj.gov."
-        ]
-      },
-      {
-        type: "heading",
-        level: 6,
-        content: "Sensitive Information"
-      },
-      {
-        type: "paragraph",
-        content: "In order to ensure responsible, safe AI use, please follow these guidelines:"
-      },
-      {
-        type: "list",
-        items: [
-          "Do not share personally identifiable information (PII) about residents, colleagues, or yourself.",
-          "Do not share confidential or sensitive content, nor transcribe or summarize meetings where sensitive topics are discussed.",
-          "In short: Do not share any information that you wouldn't share publicly."
-        ]
-      },
-      {
-        type: "paragraph",
-        content: "For more information, view the NJ Office of Innovation Guide."
-      }
     ],
-    FAQ_TITLE: "Frequently Asked Questions",
-    FAQS: [
-      "What is React JS? and How do I get started?",
-      "What is a Chatbot and how does it work?",
-      "Write me a essay on the history of the internet.",
-      "What is the capital of France and its population?",
-      "What is the weather like in New York?"
-    ],
-    CHAT_HEADER_TITLE: "NJ AI Chat Assistant",
+    CHAT_HEADER_TITLE: "Artificial Intelligence Cloud Innovation Center",
     CHAT_INPUT_PLACEHOLDER: "Type a Query...",
     HELPER_TEXT: "Cannot send empty message",
     SPEECH_RECOGNITION_START: "Start Listening",
     SPEECH_RECOGNITION_STOP: "Stop Listening",
     SPEECH_RECOGNITION_HELPER_TEXT: "Stop speaking to send the message" // New helper text
   },
-  ES: {
-    APP_NAME: "Aplicación de Plantilla de Chatbot",
-    APP_ASSISTANT_NAME: "Bot GenAI",
-    ABOUT_US_TITLE: "Acerca de nosotros",
-    ABOUT_US: "¡Bienvenido al chatbot GenAI! Estamos aquí para ayudarte a acceder rápidamente a la información relevante.",
-    FAQ_TITLE: "Preguntas frecuentes",
-    FAQS: [
-      "¿Qué es React JS? y ¿Cómo puedo empezar?",
-      "¿Qué es un Chatbot y cómo funciona?",
-      "Escríbeme un ensayo sobre la historia de Internet.",
-      "¿Cuál es la capital de Francia y su población?",
-      "¿Cómo está el clima en Nueva York?"
-    ],
-    CHAT_HEADER_TITLE: "Asistente de Chat AI de Ejemplo",
-    CHAT_INPUT_PLACEHOLDER: "Escribe una Consulta...",
-    HELPER_TEXT: "No se puede enviar un mensaje vacío",
-    SPEECH_RECOGNITION_START: "Comenzar a Escuchar",
-    SPEECH_RECOGNITION_STOP: "Dejar de Escuchar",
-    SPEECH_RECOGNITION_HELPER_TEXT: "Deja de hablar para enviar el mensaje" // New helper text
-  }
-};
-
-export const SWITCH_TEXT = {
-  SWITCH_LANGUAGE_ENGLISH: "English",
-  SWITCH_TOOLTIP_ENGLISH: "Language",
-  SWITCH_LANGUAGE_SPANISH: "Español",
-  SWITCH_TOOLTIP_SPANISH: "Idioma"
-};
-
-export const LANDING_PAGE_TEXT = {
-  EN: {
-    CHOOSE_LANGUAGE: "Choose language:",
-    ENGLISH: "English",
-    SPANISH: "Español",
-    SAVE_CONTINUE: "Save and Continue",
-    APP_ASSISTANT_NAME: "Sample GenAI Bot Landing Page",
-  },
-  ES: {
-    CHOOSE_LANGUAGE: "Elige el idioma:",
-    ENGLISH: "English",
-    SPANISH: "Español",
-    SAVE_CONTINUE: "Guardar y continuar",
-    APP_ASSISTANT_NAME: "Bot GenAI de Ejemplo Página de Inicio",
-  }
 };
 
 
 // --------------------------------------------------------------------------------------------------------//
 // admin constants
 // Dummy admin users
-export const adminUsers = ["admin1", "admin2", "superadmin", "adminTest"];
+export const adminUsers = ["28216390-8081-70f2-dca6-b847a8816e27","admin1", "admin2", "superadmin", "adminTest"];
 // --------------------------------------------------------------------------------------------------------//
 
 // API endpoints
-
-
-export const CHAT_API = process.env.REACT_APP_CHAT_API; // URL for the chat API endpoint
-export const WEBSOCKET_API = process.env.REACT_APP_WEBSOCKET_API; // URL for the WebSocket API endpoint
 export const MODELS_LIST = process.env.REACT_APP_MODEL_INFORMATIONS // url for getting information about the models
 export const CONVERSE_API = process.env.REACT_APP_CONVERSE_API
 
@@ -161,7 +73,7 @@ export const MAX_TEXT_LENGTH_PDF = 150000; // Number of words to check for PDF s
 
 // Features
 export const ALLOW_FILE_UPLOAD = true; // Set to true to enable file upload feature
-export const ALLOW_VOICE_RECOGNITION = true; // Set to true to enable voice recognition feature
+export const ALLOW_VOICE_RECOGNITION = false; // Set to true to enable voice recognition feature
 
 export const ALLOW_MULTLINGUAL_TOGGLE = false; // Set to true to enable multilingual support
 export const ALLOW_LANDING_PAGE = false; // Set to true to enable the landing page
@@ -169,7 +81,6 @@ export const ALLOW_LANDING_PAGE = false; // Set to true to enable the landing pa
 // --------------------------------------------------------------------------------------------------------//
 // Styling under work, would reccomend keeping it false for now
 export const ALLOW_MARKDOWN_BOT = false; // Set to true to enable markdown support for bot messages
-export const ALLOW_FAQ = true; // Set to true to enable the FAQs to be visible in Chat body 
 
 
 

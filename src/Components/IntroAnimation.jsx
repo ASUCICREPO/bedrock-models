@@ -1,7 +1,7 @@
 import React from 'react'
 import animation from "../Assets/intro.gif";
 import { Box, Typography} from "@mui/material";
-import {PRIMARY_MAIN} from "../utilities/constants";
+import {primary_50} from "../utilities/constants";
 
 const IntroAnimation = () => {
   return (
@@ -13,7 +13,7 @@ const IntroAnimation = () => {
       minHeight="70vh"
     >
       <img src={animation} alt="intro animation of a sphere" width={"100%"} />
-      <Typography color={PRIMARY_MAIN} variant='body2'>Ask a question to get started!</Typography>
+      <Typography color={primary_50} variant='body2'>Ask a question to get started!</Typography>
     </Box>
   )
 }
