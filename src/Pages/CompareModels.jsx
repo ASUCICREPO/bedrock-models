@@ -133,7 +133,7 @@ const CompareModels = () => {
       },
     },
     // Conditionally render the "Update models" button only if the user is an admin
-    isAdmin && {
+    {
       label: "Update models",
       route: "/select",
       color: "secondary",
