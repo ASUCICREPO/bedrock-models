@@ -1,6 +1,6 @@
-# Interactive Chat Application Deployment Guide
+# Bedrock Models Application Deployment Guide
 
-This guide provides instructions for deploying the backend CDK code and the frontend React application for the Interactive Chat project.
+This guide provides instructions for deploying the backend CDK code and the frontend React application for the Bedrock Models project.
 
 ## Backend Deployment (CDK)
 
@@ -9,11 +9,11 @@ This guide provides instructions for deploying the backend CDK code and the fron
 1. Open AWS CloudShell in your target account.
 2. Clone the repository:
    ```
-   git clone https://github.com/ASUCICREPO/CICInteractiveChat
+   git clone https://github.com/ASUCICREPO/bedrock-models
    ```
 3. Navigate to the project directory:
    ```
-   cd InteractiveChatCDK/Interactive-cdk-app
+   cd bedrock-models/bedrock-models-cdk-app
    ```
 4. Set up the Python virtual environment:
    ```
