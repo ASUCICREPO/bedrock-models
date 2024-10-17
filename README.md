@@ -25,41 +25,18 @@ This guide provides instructions for deploying the backend CDK code and the fron
    pip install -r requirements.txt
    ```
 
-### Configure Constants
-
-1. Navigate to the code directory:
-   ```
-   cd Interactive_cdk_app
-   ```
-2. Edit the config file:
-   ```
-   nano config.py
-   ```
-3. Update the following constants:
-   - `vpc_id`
-   - `vpc_subnet_id`
-   - `account` (your AWS account number)
-   - `region` (default is "us-east-1")
-4. Save and exit (Ctrl+X, then Y, then Enter)
-
 ### Deploy
 
-1. Return to the main directory:
-   ```
-   cd ..
-   ```
-2. Bootstrap the CDK (if not done before):
+1. Bootstrap the CDK (if not done before):
    ```
    cdk bootstrap
    ```
-3. Deploy the stack:
+2. Deploy the stack:
    ```
    cdk deploy
    ```
-4. Confirm the deployment when prompted.
-5. Save the output URLs for frontend deployment.
-
-**Note:** Ensure that 3 VPC endpoints (S3, bedrock-runtime, and bedrock) are created and attached to the VPC and subnet used before deployment.
+3. Confirm the deployment when prompted.
+4. Save the output URLs for frontend deployment.
 
 ## Frontend Deployment
 
@@ -74,15 +51,27 @@ This guide provides instructions for deploying the backend CDK code and the fron
 
 ### Setup and Build
 
-1. Download the frontend zipped folder from the provided Presigned URL.
-2. Open the folder in VS Code and open a terminal.
+1. Clone the repository locally:
+   ```
+   git clone https://github.com/ASUCICREPO/bedrock-models
+   ```
+2. Navigate to the frontend folder:
+   ```
+   cd frontend
+   ```
 3. Install dependencies:
    ```
    npm install
    ```
-4. Update the `.env` file with the correct URLs:
-   - `REACT_APP_MODEL_INFORMATIONS`: List models functional URL
-   - `REACT_APP_CONVERSE_API`: Converse bedrock functional URL
+4. Create and update the `.env` file:
+   ```
+   touch .env
+   ```
+   Add the following lines to the `.env` file:
+   ```
+   REACT_APP_MODEL_INFORMATIONS=<List models functional URL>
+   REACT_APP_CONVERSE_API=<Converse bedrock functional URL>
+   ```
 5. Test the app locally:
    ```
    npm start
