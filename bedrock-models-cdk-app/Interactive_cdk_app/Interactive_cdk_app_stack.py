@@ -162,27 +162,6 @@ class InteractiveCdkAppStack(Stack):
                 )
             ]
         ))
-        converse.role.attach_inline_policy(iam.Policy(self, "vpc-access-policy-converse-deny",
-            statements=[
-                iam.PolicyStatement(
-                    effect = iam.Effect.DENY,
-                    actions = [
-                        "ec2:CreateNetworkInterface",
-                        "ec2:DeleteNetworkInterface",
-                        "ec2:DescribeNetworkInterfaces",
-                        "ec2:DetachNetworkInterface",
-                        "ec2:AssignPrivateIpAddresses",
-                        "ec2:UnassignPrivateIpAddresses",
-                        ],
-                    resources=["*"],
-                    conditions={
-                        "ArnEquals": {
-                            "lambda:SourceFunctionArn": converse.function_arn
-                        }
-                    }
-                )
-            ]
-        ))
         converse.role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("service-role/AWSLambdaVPCAccessExecutionRole"))
 
         # Create a URL for the lambda function and output it
