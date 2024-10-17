@@ -4,7 +4,6 @@ import os
 import aws_cdk as cdk
 
 from Interactive_cdk_app.Interactive_cdk_app_stack import InteractiveCdkAppStack
-from Interactive_cdk_app.config import account, region
 
 
 app = cdk.App()
@@ -21,7 +20,7 @@ InteractiveCdkAppStack(app, "InteractiveCdkAppStack",
     # Uncomment the next line if you know exactly what Account and Region you
     # want to deploy the stack to. */
 
-    env=cdk.Environment(account=account, region=region),
+    #env=cdk.Environment(account=account, region=region),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
     )
